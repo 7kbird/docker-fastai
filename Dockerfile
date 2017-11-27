@@ -1,7 +1,7 @@
 FROM tensorflow/tensorflow:1.4.0-gpu-py3
 
 RUN pip install --no-cache-dir \
-	keras==2.1.1 \
+	keras==2.0.9 \
 	mechanicalsoup \
 	progressbar2 \
 	bcolz
