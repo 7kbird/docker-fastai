@@ -34,7 +34,7 @@ RUN cd /root/libgpuarray && \
 
 # Install Theano
 RUN pip install --upgrade --no-deps --no-cache-dir git+git://github.com/Theano/Theano.git@rel-1.0.1#egg=Theano && \
-	echo -e "[global]\ndevice=cuda\nfloatX=float32\noptimizer_including=cudnn\nmode=FAST_RUN\nforce_device=True \
+	echo "[global]\ndevice=cuda\nfloatX=float32\noptimizer_including=cudnn\nmode=FAST_RUN\nforce_device=True \
 		\n[lib]\ncnmem=0.1 \
 		\n[nvcc]\nfastmath=True \
         \n[dnn]\nenabled=True \
@@ -50,6 +50,10 @@ RUN pip install --no-cache-dir \
 	keras==2.0.9 \
 	mechanicalsoup \
 	progressbar2 \
-	bcolz
+	bcolz \
+    jupyter_contrib_nbextensions
+
+RUN jupyter contrib nbextension install --user && \
+    jupyter nbextensions_configurator enable --user
 
 # inherit ENTRYPOINT and CMD from tensorflow docker
